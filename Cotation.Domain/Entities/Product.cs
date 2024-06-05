@@ -3,7 +3,7 @@
 namespace Cotation.Domain.Entities {
     public class Product {
 
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Key] public Guid Id { get; set; } = Guid.NewGuid();
         [Required] public string Name { get; set; }
         [Required] public string Description { get; set; }
         [Required] public string Category { get; set; }
