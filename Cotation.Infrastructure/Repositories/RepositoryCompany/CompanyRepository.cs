@@ -35,9 +35,10 @@ namespace Cotation.Infrastructure.Repositories.RepositoryCompany {
                 .FirstOrDefaultAsync();
         }
 
-        public async Task Update(Company entity) {
-            _context.Companies.Update(entity);
+        public async Task<Company> Update(Company entity) {
+            var company = _context.Companies.Update(entity);
             await _context.SaveChangesAsync();
+            return company.Entity;
         }
 
 

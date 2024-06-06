@@ -6,11 +6,13 @@ using Cotation.Domain.Entities;
 using Cotation.Infrastructure.Repositories.RepositoryCompany;
 
 namespace Cotation.Application.Services.SCompany {
-    public class RegisterCompanyService(ICompanyRepository companyRepository, IMapper mapper) {
+    public class UpdateCompanyService(ICompanyRepository companyRepository, IMapper mapper) {
         private readonly ICompanyRepository _companyRepository = companyRepository;
-        private readonly IMapper _mapper = mapper;
+        private readonly IMapper _mapper;
 
-        public async Task<ResponseCompany> Execute(RequestCompany request) {
+        public async Task<ResponseCompany> Execute(RequestCompany request, Guid id) {
+            var companyExists = await _companyRepository.GetById(id) ?? throw new Exception("Empresa não existe.");
+
             var newDTOCompany = new DTOCompany() {
                 Name = request.Name,
                 Cnpj = request.Cnpj,
@@ -20,7 +22,7 @@ namespace Cotation.Application.Services.SCompany {
 
             var newCompany = _mapper.Map<DTOCompany, Company>(newDTOCompany);
 
-            var resultCompany = await _companyRepository.Create(newCompany);
+            var resultCompany = await _companyRepository.Update(newCompany);
 
             return new ResponseCompany {
                 Id = resultCompany.Id,
@@ -29,6 +31,7 @@ namespace Cotation.Application.Services.SCompany {
                 Email = resultCompany.Email,
                 Cnpj = resultCompany.Cnpj,
             };
+
         }
     }
 }
