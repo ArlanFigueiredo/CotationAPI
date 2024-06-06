@@ -6,7 +6,12 @@ using Cotation.Communication.DTOS.ItemDTO;
 using Cotation.Communication.DTOS.ProductDTO;
 using Cotation.Communication.DTOS.UserDTO;
 using Cotation.Infrastructure.Context;
+using Cotation.Infrastructure.Repositories.RepositoryAddress;
 using Cotation.Infrastructure.Repositories.RepositoryCompany;
+using Cotation.Infrastructure.Repositories.RepositoryCotations;
+using Cotation.Infrastructure.Repositories.RepositoryItem;
+using Cotation.Infrastructure.Repositories.RepositoryProduct;
+using Cotation.Infrastructure.Repositories.RepositoryUser;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +24,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Register AutoMapper
-builder.Services.AddAutoMapper(typeof(DTOCompanyProfile));
 
 builder.Services.AddAutoMapper(options => {
     options.AddProfile<DTOCompanyProfile>();
@@ -33,6 +36,11 @@ builder.Services.AddAutoMapper(options => {
 
 // Register repositories and services
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ICotationRepository, CotationsRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IItemsRepository, ItemsRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<RegisterCompanyService>();
 
 var app = builder.Build();
