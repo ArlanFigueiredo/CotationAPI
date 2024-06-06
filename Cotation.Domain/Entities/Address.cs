@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cotation.Domain.Entities {
     public class Address {
-
         [Key] public Guid Id { get; set; } = Guid.NewGuid();
         [ForeignKey("Company")] public Guid CompanyId { get; set; }
         public Company? Company { get; set; }

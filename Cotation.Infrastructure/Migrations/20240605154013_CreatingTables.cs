@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Cotation.API.Migrations
+namespace Cotation.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class CreatingTables : Migration
