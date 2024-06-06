@@ -21,14 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOS\Cotations\" />
-    <Folder Include="DTOS\Item\" />
-    <Folder Include="DTOS\Address\" />
-    <Folder Include="DTOS\Product\" />
-    <Folder Include="DTOS\User\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Cotation.Domain\Cotation.Domain.csproj" />
   </ItemGroup>
 

@@ -1,29 +1,37 @@
 ﻿using Cotation.Domain.Entities;
+using Cotation.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cotation.Infrastructure.Repositories.RepositoryAddress {
-    public class AddressRepository : IAddressRepository {
-        public Task<Address> Create(Address entity) {
-            throw new NotImplementedException();
+    public class AddressRepository(AppDbContext context) : IAddressRepository {
+        private readonly AppDbContext _context = context;
+        public async Task<Address> Create(Address entity) {
+            var result = await _context.Addresses.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return result.Entity;
         }
 
-        public Task Delete(Address entity) {
-            throw new NotImplementedException();
+        public async Task Delete(Address entity) {
+            _context.Addresses.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task<Address> GetAll() {
-            throw new NotImplementedException();
+        public async Task<List<Address>> GetAll() {
+            var result = await _context.Addresses.AsNoTracking().ToListAsync();
+            return result;
         }
 
-        public Task<Address> GetById(Guid id) {
-            throw new NotImplementedException();
+        public async Task<Address> GetById(Guid id) {
+            return await _context.Addresses
+                .AsNoTracking()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
         }
 
-        public Task<Address> GetByName(string name) {
-            throw new NotImplementedException();
-        }
-
-        public Task<Address> Update(Address entity) {
-            throw new NotImplementedException();
+        public async Task<Address> Update(Address entity) {
+            var result = _context.Addresses.Update(entity);
+            await _context.SaveChangesAsync();
+            return result.Entity;
         }
     }
 }

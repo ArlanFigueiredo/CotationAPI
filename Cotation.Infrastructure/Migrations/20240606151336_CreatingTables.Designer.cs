@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cotation.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240605154013_CreatingTables")]
+    [Migration("20240606151336_CreatingTables")]
     partial class CreatingTables
     {
         /// <inheritdoc />
@@ -214,7 +214,7 @@ namespace Cotation.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Cotation.Domain.Entities.Address", b =>

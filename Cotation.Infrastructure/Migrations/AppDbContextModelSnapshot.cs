@@ -211,7 +211,7 @@ namespace Cotation.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Cotation.Domain.Entities.Address", b =>
