@@ -2,7 +2,7 @@
 using Cotation.Infrastructure.Repositories.RepositoryCompany;
 
 namespace Cotation.Application.Services.SCompany {
-    public class GetByCompanyService(ICompanyRepository companyRepository) {
+    public class GetCompanyByNameService(ICompanyRepository companyRepository) {
         private readonly ICompanyRepository _companyRepository = companyRepository;
         public async Task<Company> Execute(string company) {
             var companyExists = await _companyRepository.GetByCompany(company) ?? throw new Exception("Empresa não existe.");
