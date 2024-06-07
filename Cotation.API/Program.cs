@@ -45,6 +45,11 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<RegisterCompanyService>();
 builder.Services.AddScoped<UpdateCompanyService>();
+builder.Services.AddScoped<GetAllCompanyService>();
+builder.Services.AddScoped<GetCompanyByIdService>();
+builder.Services.AddScoped<DeleteCompanyService>();
+builder.Services.AddScoped<GetCompanyByNameService>();
+
 
 
 

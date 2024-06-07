@@ -7,10 +7,10 @@ namespace Cotation.API.Controllers.Company {
     public class GetCompanyByNameController(GetCompanyByNameService getCompanyByNameService) : ControllerBase {
         private readonly GetCompanyByNameService _getCompanyByNameService = getCompanyByNameService;
 
-        [HttpGet("/company/name")]
+        [HttpGet("/company/name/{name}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> GetByName([FromBody] string name) {
+        public async Task<ActionResult> GetByName([FromRoute] string name) {
             var service = _getCompanyByNameService;
 
             try {
