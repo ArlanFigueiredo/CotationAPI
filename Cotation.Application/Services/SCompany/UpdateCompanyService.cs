@@ -8,12 +8,13 @@ using Cotation.Infrastructure.Repositories.RepositoryCompany;
 namespace Cotation.Application.Services.SCompany {
     public class UpdateCompanyService(ICompanyRepository companyRepository, IMapper mapper) {
         private readonly ICompanyRepository _companyRepository = companyRepository;
-        private readonly IMapper _mapper;
+        private readonly IMapper _mapper = mapper;
 
         public async Task<ResponseCompany> Execute(RequestCompany request, Guid id) {
-            var companyExists = await _companyRepository.GetById(id) ?? throw new Exception("Empresa não existe.");
+            _ = await _companyRepository.GetById(id) ?? throw new Exception("Empresa não existe.");
 
             var newDTOCompany = new DTOCompany() {
+                Id = id,
                 Name = request.Name,
                 Cnpj = request.Cnpj,
                 Phone = request.Phone,

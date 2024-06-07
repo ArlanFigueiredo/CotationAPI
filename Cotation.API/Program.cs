@@ -1,3 +1,4 @@
+using Cotation.API.Validators.Company;
 using Cotation.Application.Services.SCompany;
 using Cotation.Communication.DTOS.AddressDTO;
 using Cotation.Communication.DTOS.CompanyDTO;
@@ -29,7 +30,7 @@ builder.Services.AddAutoMapper(options => {
     options.AddProfile<DTOCompanyProfile>();
     options.AddProfile<DTOAddressProfile>();
     options.AddProfile<DTOProductProfile>();
-    options.AddProfile<DTOItemProfile>();   
+    options.AddProfile<DTOItemProfile>();
     options.AddProfile<DTOCotationsProfile>();
     options.AddProfile<DTOUserProfile>();
 });
@@ -41,7 +42,14 @@ builder.Services.AddScoped<ICotationRepository, CotationsRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IItemsRepository, ItemsRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 builder.Services.AddScoped<RegisterCompanyService>();
+builder.Services.AddScoped<UpdateCompanyService>();
+
+
+
+builder.Services.AddScoped<ResponseErrorRegisterCompany>();
+builder.Services.AddScoped<ValidatorRegisterCompany>();
 
 var app = builder.Build();
 
