@@ -6,15 +6,18 @@ using Cotation.Infrastructure.Repositories.RepositoryAddress;
 
 namespace Cotation.Application.Services.SAddress {
     public class UpdateAddressService(
-        IAddressRepository addressRepository, 
+        IAddressRepository addressRepository,
         IMapper mapper
     ) {
         private readonly IAddressRepository _addressRepository = addressRepository;
         private readonly IMapper _mapper = mapper;
 
-        public async Task<Address> Execute(RequestAddress request) {
+        public async Task<Address> Execute(RequestAddress request, Guid id) {
+
+            _ = await _addressRepository.GetById(id) ?? throw new Exception("Endereço não encontrado.");
 
             var newDTOAddress = new DTOAddress {
+                Id = id,
                 CompanyId = request.CompanyId,
                 ZipCode = request.ZipCode,
                 Road = request.Road,
