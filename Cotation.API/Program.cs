@@ -54,6 +54,9 @@ builder.Services.AddScoped<GetCompanyByNameService>();
 
 builder.Services.AddScoped<RegisterAddressService>();
 builder.Services.AddScoped<UpdateAddressService>();
+builder.Services.AddScoped<DeleteAddressService>();
+builder.Services.AddScoped<GetAllAddressService>();
+builder.Services.AddScoped<GetAddressByIdService>();
 
 
 

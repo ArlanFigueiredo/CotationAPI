@@ -1,7 +1,7 @@
 ﻿using Cotation.Infrastructure.Repositories.RepositoryAddress;
 
 namespace Cotation.Application.Services.SAddress {
-    internal class DeleteAddressService(IAddressRepository addressRepository) {
+    public class DeleteAddressService(IAddressRepository addressRepository) {
         private readonly IAddressRepository _addressRepository = addressRepository;
         private readonly string MessageSuccess = "Endereço deletado com sucesso";
         public async Task<string> Execute(Guid id) {
