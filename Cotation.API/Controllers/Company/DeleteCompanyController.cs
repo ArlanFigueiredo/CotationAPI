@@ -7,7 +7,7 @@ namespace Cotation.API.Controllers.Company {
     public class DeleteCompanyController(DeleteCompanyService deleteCompanyService) : ControllerBase {
         private readonly DeleteCompanyService _deleteCompanyService = deleteCompanyService;
 
-        [HttpDelete]
+        [HttpDelete("/company/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Delete([FromRoute] Guid id) {
