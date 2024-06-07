@@ -33,5 +33,12 @@ namespace Cotation.Infrastructure.Repositories.RepositoryAddress {
             await _context.SaveChangesAsync();
             return result.Entity;
         }
+
+        public async Task<Address> GetAddressByCompany(Guid companyId) {
+            return await _context.Addresses
+                .AsNoTracking()
+                .Where(x => x.CompanyId == companyId)
+                .FirstOrDefaultAsync();
+        }
     }
 }

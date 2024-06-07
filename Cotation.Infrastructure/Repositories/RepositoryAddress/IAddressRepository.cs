@@ -8,5 +8,6 @@ namespace Cotation.Infrastructure.Repositories.RepositoryAddress {
         public Task Delete(Address entity);
         public Task<Address> GetById(Guid id);
         public Task<List<Address>> GetAll();
+        public Task<Address> GetAddressByCompany(Guid companyId);
     }
 }

@@ -1,4 +1,6 @@
+using Cotation.API.Validators.Address;
 using Cotation.API.Validators.Company;
+using Cotation.Application.Services.SAddress;
 using Cotation.Application.Services.SCompany;
 using Cotation.Communication.DTOS.AddressDTO;
 using Cotation.Communication.DTOS.CompanyDTO;
@@ -50,11 +52,17 @@ builder.Services.AddScoped<GetCompanyByIdService>();
 builder.Services.AddScoped<DeleteCompanyService>();
 builder.Services.AddScoped<GetCompanyByNameService>();
 
+builder.Services.AddScoped<RegisterAddressService>();
+builder.Services.AddScoped<UpdateAddressService>();
+
 
 
 
 builder.Services.AddScoped<ResponseErrorRegisterCompany>();
 builder.Services.AddScoped<ValidatorRegisterCompany>();
+
+builder.Services.AddScoped<ResponseErrorRegisterAddress>();
+builder.Services.AddScoped<ValidatorRegisterAddress>();
 
 var app = builder.Build();
 

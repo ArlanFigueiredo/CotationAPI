@@ -29,6 +29,7 @@ namespace Cotation.API.Controllers.Address {
             }
             catch (Exception ex) {
                 return BadRequest(ex.Message);
+                Console.WriteLine($"Ocorreu um erro: {ex.Message} ");
             }
         }
     }
