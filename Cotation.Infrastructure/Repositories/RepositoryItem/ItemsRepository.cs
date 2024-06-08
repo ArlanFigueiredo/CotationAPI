@@ -33,8 +33,16 @@ namespace Cotation.Infrastructure.Repositories.RepositoryItem {
                     .AsNoTracking()
                     .Where(x => x.Id == id)
                     .FirstOrDefaultAsync();
-
         }
+
+        public async Task<Item> GetByProductId(Guid id) {
+            return await _context.Items
+                .AsNoTracking()
+                .Where(x => x.ProductId == id)
+                .FirstOrDefaultAsync();
+                
+        }
+
         public async Task<Item> Update(Item entity) {
             var item = _context.Items.Update(entity);
             await _context.SaveChangesAsync();

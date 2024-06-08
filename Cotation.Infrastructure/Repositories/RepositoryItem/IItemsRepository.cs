@@ -8,5 +8,6 @@ namespace Cotation.Infrastructure.Repositories.RepositoryItem {
         public Task<Item> GetById(Guid id);
         public Task<List<Item>> GetAll();
         public Task<List<Item>> GetByCompanyId(Guid companyId);
+        public Task<Item> GetByProductId(Guid ProductId);
     }
 }
