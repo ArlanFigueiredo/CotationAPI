@@ -3,7 +3,7 @@ using Cotation.Communication.ModelsViews.Requests.User;
 using Cotation.Infrastructure.Repositories.RepositoryUser;
 
 namespace Cotation.Application.Services.SUser {
-    public class AuthenticateUser(
+    public class AuthenticateUserService(
         IUserRepository userRepository,
         VerifyHashPassword verifyHashPassword,
         GenerateTokenJWT generateTokenJWT

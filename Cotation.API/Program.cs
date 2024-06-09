@@ -64,6 +64,7 @@ builder.Services.AddScoped<GetAddressByIdService>();
 
 builder.Services.AddScoped<RegisterProductService>();
 builder.Services.AddScoped<RegisterUserService>();
+builder.Services.AddScoped<AuthenticateUserService>();  
 
 builder.Services.AddScoped<GenerateHashPassword>();
 builder.Services.AddScoped<GenerateTokenJWT>();
