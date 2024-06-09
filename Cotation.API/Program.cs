@@ -1,7 +1,11 @@
 using Cotation.API.Validators.Address;
 using Cotation.API.Validators.Company;
+using Cotation.API.Validators.User;
 using Cotation.Application.Services.SAddress;
 using Cotation.Application.Services.SCompany;
+using Cotation.Application.Services.SProduct;
+using Cotation.Application.Services.SUser;
+using Cotation.Application.Utilities.User;
 using Cotation.Communication.DTOS.AddressDTO;
 using Cotation.Communication.DTOS.CompanyDTO;
 using Cotation.Communication.DTOS.CotationsDTO;
@@ -58,6 +62,12 @@ builder.Services.AddScoped<DeleteAddressService>();
 builder.Services.AddScoped<GetAllAddressService>();
 builder.Services.AddScoped<GetAddressByIdService>();
 
+builder.Services.AddScoped<RegisterProductService>();
+builder.Services.AddScoped<RegisterUserService>();
+
+builder.Services.AddScoped<GenerateHashPassword>();
+builder.Services.AddScoped<GenerateTokenJWT>();
+builder.Services.AddScoped<VerifyHashPassword>();
 
 
 
@@ -66,6 +76,9 @@ builder.Services.AddScoped<ValidatorRegisterCompany>();
 
 builder.Services.AddScoped<ResponseErrorRegisterAddress>();
 builder.Services.AddScoped<ValidatorRegisterAddress>();
+
+builder.Services.AddScoped<ResponseErrorRegisterUser>();
+builder.Services.AddScoped<ValidatorRegisterUser>();
 
 var app = builder.Build();
 
