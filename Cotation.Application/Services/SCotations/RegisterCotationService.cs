@@ -24,7 +24,7 @@ namespace Cotation.Application.Services.SCotations {
         private double Amount = 0;
 
         public async Task<ResponseCotations> Execute(RequestCotations cotation) {
-            var company = await _companyRepository.GetById(cotation.CompanyId) ?? throw new Exception("Empresa não existe.");
+            _ = await _companyRepository.GetById(cotation.CompanyId) ?? throw new Exception("Empresa não existe.");
             var item = await _itemsRepository.GetByCompanyId(cotation.CompanyId);
 
             if (item.Count == 0) {
