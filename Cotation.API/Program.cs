@@ -13,6 +13,7 @@ using Cotation.Communication.DTOS.ItemDTO;
 using Cotation.Communication.DTOS.ProductDTO;
 using Cotation.Communication.DTOS.UserDTO;
 using Cotation.Infrastructure.Context;
+using Cotation.Infrastructure.EmailService;
 using Cotation.Infrastructure.Repositories.RepositoryAddress;
 using Cotation.Infrastructure.Repositories.RepositoryCompany;
 using Cotation.Infrastructure.Repositories.RepositoryCotations;
@@ -72,6 +73,7 @@ builder.Services.AddScoped<VerifyHashPassword>();
 
 
 
+
 builder.Services.AddScoped<ResponseErrorRegisterCompany>();
 builder.Services.AddScoped<ValidatorRegisterCompany>();
 
@@ -80,6 +82,10 @@ builder.Services.AddScoped<ValidatorRegisterAddress>();
 
 builder.Services.AddScoped<ResponseErrorRegisterUser>();
 builder.Services.AddScoped<ValidatorRegisterUser>();
+
+
+builder.Services.AddScoped<SettingsEmailService>();
+builder.Services.AddScoped<SendTestEmail>();
 
 var app = builder.Build();
 
