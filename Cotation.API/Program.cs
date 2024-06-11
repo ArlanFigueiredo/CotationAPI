@@ -1,8 +1,11 @@
 using Cotation.API.Validators.Address;
 using Cotation.API.Validators.Company;
+using Cotation.API.Validators.Item;
+using Cotation.API.Validators.Product;
 using Cotation.API.Validators.User;
 using Cotation.Application.Services.SAddress;
 using Cotation.Application.Services.SCompany;
+using Cotation.Application.Services.SItem;
 using Cotation.Application.Services.SProduct;
 using Cotation.Application.Services.SUser;
 using Cotation.Application.Utilities.User;
@@ -63,13 +66,29 @@ builder.Services.AddScoped<DeleteAddressService>();
 builder.Services.AddScoped<GetAllAddressService>();
 builder.Services.AddScoped<GetAddressByIdService>();
 
-builder.Services.AddScoped<RegisterProductService>();
 builder.Services.AddScoped<RegisterUserService>();
 builder.Services.AddScoped<AuthenticateUserService>();  
 
 builder.Services.AddScoped<GenerateHashPassword>();
 builder.Services.AddScoped<GenerateTokenJWT>();
 builder.Services.AddScoped<VerifyHashPassword>();
+
+
+
+builder.Services.AddScoped<RegisterProductService>();
+builder.Services.AddScoped<UpdateProductService>();
+builder.Services.AddScoped<GetAllProductService>();
+builder.Services.AddScoped<GetProductByIdService>();
+builder.Services.AddScoped<DeleteProductService>();
+builder.Services.AddScoped<GetProductByNameService>();
+
+
+builder.Services.AddScoped<RegisterItemService>();
+builder.Services.AddScoped<UpdateItemService>();
+builder.Services.AddScoped<GetAllItemService>();
+builder.Services.AddScoped<GetItemsByCompanyServices>();
+builder.Services.AddScoped<GetItemByIdService>();
+builder.Services.AddScoped<DeleteItemService>();
 
 
 
@@ -82,6 +101,14 @@ builder.Services.AddScoped<ValidatorRegisterAddress>();
 
 builder.Services.AddScoped<ResponseErrorRegisterUser>();
 builder.Services.AddScoped<ValidatorRegisterUser>();
+
+builder.Services.AddScoped<ResponseErrorRegisterProduct>();
+builder.Services.AddScoped<ValidatorRegisterProduct>();
+
+
+builder.Services.AddScoped<ResponseErrorRegisterItem>();
+builder.Services.AddScoped<ValidatorRegisterItem>();
+
 
 
 builder.Services.AddScoped<SettingsEmailService>();
