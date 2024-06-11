@@ -1,7 +1,7 @@
 ﻿using Cotation.Infrastructure.Repositories.RepositoryItem;
 
 namespace Cotation.Application.Services.SItem {
-    internal class DeleteItemService(IItemsRepository itemsRepository) {
+    public class DeleteItemService(IItemsRepository itemsRepository) {
         private readonly IItemsRepository _itemsRepository = itemsRepository;
         private readonly string MessageSuccess = "Item deletado com sucesso.";
         public async Task<string> Execute(Guid id) {
