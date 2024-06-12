@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cotation.Application.Interfaces.Address;
 using Cotation.Communication.DTOS.AddressDTO;
 using Cotation.Communication.ModelsViews.Requests.Address;
 using Cotation.Communication.ModelsViews.Responses.Address;
@@ -11,7 +12,7 @@ namespace Cotation.Application.Services.SAddress {
         IAddressRepository addressRepository,
         ICompanyRepository companyRepository,
         IMapper mapper
-    ) {
+    ) : IRegisterAddressService {
         private readonly IAddressRepository _addressRepository = addressRepository;
         private readonly ICompanyRepository _companyRepository = companyRepository;
         private readonly IMapper _mapper = mapper;
@@ -23,9 +24,7 @@ namespace Cotation.Application.Services.SAddress {
             var addressExsists = await _addressRepository.GetAddressByCompany(request.CompanyId);
             _ = (addressExsists != null) ? throw new Exception("Essa empresa já possui um endereço.") : addressExsists;
 
-            var newDTOAddress = new DTOAddress(request);
-
-            var newAddress = _mapper.Map<DTOAddress, Address>(newDTOAddress);
+            var newAddress = _mapper.Map<DTOAddress, Address>(new DTOAddress(request));
 
             var address = await _addressRepository.Create(newAddress);
 
