@@ -1,8 +1,9 @@
-﻿using Cotation.Communication.ModelsViews.Responses.Product;
+﻿using Cotation.Application.Interfaces.Product;
+using Cotation.Communication.ModelsViews.Responses.Product;
 using Cotation.Infrastructure.Repositories.RepositoryProduct;
 
 namespace Cotation.Application.Services.SProduct {
-    public class GetProductByNameService(IProductRepository productRepository) {
+    public class GetProductByNameService(IProductRepository productRepository) : IGetProductByNameService {
         private readonly IProductRepository _productRepository = productRepository;
 
         public async Task<ResponseProduct> Execute(string name) {
