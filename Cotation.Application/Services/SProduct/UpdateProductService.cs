@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cotation.Application.Interfaces.Product;
 using Cotation.Communication.DTOS.ProductDTO;
 using Cotation.Communication.ModelsViews.Requests.Product;
 using Cotation.Communication.ModelsViews.Responses.Product;
@@ -6,7 +7,7 @@ using Cotation.Domain.Entities;
 using Cotation.Infrastructure.Repositories.RepositoryProduct;
 
 namespace Cotation.Application.Services.SProduct {
-    public class UpdateProductService(IProductRepository productRepository, IMapper mapper) {
+    public class UpdateProductService(IProductRepository productRepository, IMapper mapper) : IUpdateProductService {
         private readonly IProductRepository _productRepository = productRepository;
         private readonly IMapper _mapper = mapper;
 
