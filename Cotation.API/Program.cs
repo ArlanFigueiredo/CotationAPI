@@ -1,10 +1,13 @@
 using Cotation.API.Validators.Address;
 using Cotation.API.Validators.Company;
+using Cotation.API.Validators.Cotations;
 using Cotation.API.Validators.Item;
 using Cotation.API.Validators.Product;
 using Cotation.API.Validators.User;
+using Cotation.Application.Interfaces.User;
 using Cotation.Application.Services.SAddress;
 using Cotation.Application.Services.SCompany;
+using Cotation.Application.Services.SCotations;
 using Cotation.Application.Services.SItem;
 using Cotation.Application.Services.SProduct;
 using Cotation.Application.Services.SUser;
@@ -67,7 +70,7 @@ builder.Services.AddScoped<GetAllAddressService>();
 builder.Services.AddScoped<GetAddressByIdService>();
 
 builder.Services.AddScoped<RegisterUserService>();
-builder.Services.AddScoped<AuthenticateUserService>();  
+builder.Services.AddScoped<IAuthenticateUserService, AuthenticateUserService>();
 
 builder.Services.AddScoped<GenerateHashPassword>();
 builder.Services.AddScoped<GenerateTokenJWT>();
@@ -90,6 +93,12 @@ builder.Services.AddScoped<GetItemsByCompanyServices>();
 builder.Services.AddScoped<GetItemByIdService>();
 builder.Services.AddScoped<DeleteItemService>();
 
+builder.Services.AddScoped<RegisterCotationService>();
+builder.Services.AddScoped<UpdateCotationService>();
+builder.Services.AddScoped<DeleteCotationSerivce>();
+builder.Services.AddScoped<GetCotationByIdService>();
+builder.Services.AddScoped<GetAllCotationsService>();
+
 
 
 
@@ -109,6 +118,8 @@ builder.Services.AddScoped<ValidatorRegisterProduct>();
 builder.Services.AddScoped<ResponseErrorRegisterItem>();
 builder.Services.AddScoped<ValidatorRegisterItem>();
 
+builder.Services.AddScoped<ResponseErrorRegisterCotations>();
+builder.Services.AddScoped<ValidatorErrorCotations>();
 
 
 builder.Services.AddScoped<SettingsEmailService>();
