@@ -1,4 +1,5 @@
-﻿using Cotation.Domain.Entities;
+﻿using Cotation.Communication.ModelsViews.Requests.Product;
+using Cotation.Domain.Entities;
 using Cotation.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,7 @@ namespace Cotation.Infrastructure.Repositories.RepositoryProduct {
                 .AsNoTracking()
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
-                    
+
         }
 
         public async Task<Product> GetByName(string name) {
@@ -43,6 +44,15 @@ namespace Cotation.Infrastructure.Repositories.RepositoryProduct {
             var item = _context.Products.Update(entity);
             await _context.SaveChangesAsync();
             return item.Entity;
+        }
+
+        public async Task<List<Product>> GetProductAsync(RequestListProduct request) {
+            var list = await _context.Products
+                .AsNoTracking()
+                .Skip(request.Skip)
+                .Take(request.Take)
+                .ToListAsync();
+            return list;
         }
     }
 }

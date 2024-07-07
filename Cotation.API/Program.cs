@@ -56,6 +56,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IItemsRepository, ItemsRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+
 builder.Services.AddScoped<RegisterCompanyService>();
 builder.Services.AddScoped<UpdateCompanyService>();
 builder.Services.AddScoped<GetAllCompanyService>();
@@ -84,6 +85,7 @@ builder.Services.AddScoped<GetAllProductService>();
 builder.Services.AddScoped<GetProductByIdService>();
 builder.Services.AddScoped<DeleteProductService>();
 builder.Services.AddScoped<GetProductByNameService>();
+builder.Services.AddScoped<GetProductPaginationService>();
 
 
 builder.Services.AddScoped<RegisterItemService>();
@@ -125,6 +127,16 @@ builder.Services.AddScoped<ValidatorErrorCotations>();
 builder.Services.AddScoped<SettingsEmailService>();
 builder.Services.AddScoped<SendTestEmail>();
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("MyAllowSpecificOrigins",
+    builder => {
+        builder.WithOrigins(["http://localhost:4200"])
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -132,8 +144,9 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
+app.UseCors("MyAllowSpecificOrigins");
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

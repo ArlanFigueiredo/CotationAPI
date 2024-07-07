@@ -8,7 +8,7 @@ namespace Cotation.Infrastructure.EmailService {
 
             SmtpClient smtpClient = new("smtp.gmail.com", 587) {
                 EnableSsl = true, // Habilitar SSL/TLS
-                Credentials = new NetworkCredential("arlan.carloz@gmail.com", "sznl mmll tuda pkwn")
+               
             };
             smtpClient.Send(mailMessage);
 

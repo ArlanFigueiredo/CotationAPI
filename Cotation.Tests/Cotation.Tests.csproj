@@ -18,6 +18,21 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="xunit" Version="2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cotation.API\Cotation.API.csproj" />
+    <ProjectReference Include="..\Cotation.Application\Cotation.Application.csproj" />
+    <ProjectReference Include="..\Cotation.Communication\Cotation.Communication.csproj" />
+    <ProjectReference Include="..\Cotation.Domain\Cotation.Domain.csproj" />
+    <ProjectReference Include="..\Cotation.Infrastructure\Cotation.Infrastructure.csproj" />
+    <ProjectReference Include="..\Exception\Exception.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Company\" />
   </ItemGroup>
 
 </Project>
